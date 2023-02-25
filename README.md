@@ -1,8 +1,33 @@
 # Playwright-Pytest
-To Practice &amp; Learn New Stuffs in Python
+To Practice &amp; Learn New Stuffs in Playwright with Python
 
 ## Installation Required:
-1. 
+Either you can run 
+```python
+    python3 -m pip install -r requirements.txt
+    python3 -m playwright install
+```
+Or, if you know what you are doing, then run
+```python
+    python3 -m pip install pytest
+    python3 -m pip install pytest-xdist
+    python3 -m pip install allure-pytest
+    python3 -m pip install pytest-playwright
+    python3 -m playwright install  #For installing Chromium, Firefox and Webkit browsers
+```
+## If allure is not recognized as powershell command Troubleshooting:
+1. Install nvm from here https://github.com/coreybutler/nvm-windows/releases (For Windows)
+2. Install node using nvm
+```node
+    nvm install <version>
+    nvm use <installed version>
+    npm install -g allure-commandline --save-dev
+```
+3. If you find authentication error then
+```shell
+    Set-ExecutionPolicy RemoteSigned -Scope CurrentUser
+```
+4. Now allure serve command should work
 
 ## VENV Troubleshooting:
 In VSCode, there is no default option to create virtual environment in Python. So follow below steps to create one:
@@ -57,5 +82,37 @@ Here is the link for downloading [Microsoft Visual c++] https://support.microsof
 3. Reinstall the venv & Python packages
 
 ## Starting with the first Playwright test:
-s
-1. 
+1. Install all the required packages and set up vscode as mentioned above
+2. Run:
+```python
+    pytest --alluredir=allure-results --headed --numprocesses auto
+    allure serve .\allure-results
+```
+
+# TODO:
+1. Debugging using page.pause() & inspector
+2. https://shields.io/
+
+
+
+# Jenkins Integration:
+## TODO
+
+## Troubleshooting for allure report:
+1. Install allure plugin for jenkins
+2. Add below code in the jenkins file:
+```bash
+    stage('Generating Reports') {
+        steps {
+            script {
+                allure([
+                    includePorperties: false,
+                    jdk: '',
+                    properties: [],
+                    reportBuildPolicy: 'ALWAYS',
+                    results: [[path: 'allure-results']]
+                ])
+            }
+        }
+    }
+```
