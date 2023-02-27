@@ -7,5 +7,5 @@ import pytest
 def browser_context_args(browser_context_args):
     return {
         **browser_context_args,
-        "ignore_http_errors": True #For bypassing the http certificate errors
+        "ignore_https_errors": True #For bypassing the http certificate errors
     }
