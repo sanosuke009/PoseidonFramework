@@ -1,5 +1,5 @@
 # Poseidon Framework
-## One stop test automation framework for all types of application with 3-pronged approach
+## A trident to penetrate the test automation barrier! One stop test automation framework for all types of application with 3-pronged approach!
 
 ## Features:
 1. Playwright with Pytest -> To Automate Web applications -> In Progress
@@ -8,7 +8,7 @@
     3. Playwright default html report -> DONE
     4. Video recording of the execution -> DONE
     5. Parallel execution -> DONE
-    6. Integration with CI -> In Progress
+    6. Integration with CI -> DONE
     7. Segregation of pages and configured context -> DONE
 2. Playwright with Pytest -> To Automate API -> TODO
 3. PyWinAuto with Pytest -> To Automate Desktop applications -> TODO
