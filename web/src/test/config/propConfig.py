@@ -8,7 +8,7 @@ reportPath = 'allure-results/'
 implicitwait = 5000
 explicitwait = 20000
 browsername = 'Chrome'
-headless = False
+headless = True
 
 user_data_dir = "./web/user_data_dir"
 playwright_videos_dir = "./recorded-videos/"
