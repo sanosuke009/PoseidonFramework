@@ -9,3 +9,13 @@ implicitwait = 5000
 explicitwait = 20000
 browsername = 'Chrome'
 headless = False
+
+user_data_dir = "./web/user_data_dir"
+playwright_videos_dir = "./recorded-videos/"
+playwright_traces_dir = "./test-results/"
+
+
+#================Parabank====================
+parabankurl_local = "https://parabank.parasoft.com/parabank/index.htm"
+parabankusername = 'japaneseposeidon'
+parabankpassword = 'test123'
