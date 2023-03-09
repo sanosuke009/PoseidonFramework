@@ -1,9 +1,10 @@
 
 from pytest import *
 import pytest
-from playwright.sync_api import BrowserType, Playwright, BrowserContext
+from playwright.sync_api import Browser, BrowserType, Playwright, BrowserContext, Page
 from typing import Dict
-from web.src.test.config.propConfig import playwright_traces_dir, browsername, headless, playwright_videos_dir
+from web.src.test.baseClass.baseclass import baseclass
+from web.src.test.config.propConfig import *
 
 @pytest.fixture(scope="session")
 def browser_context_args(browser_context_args):
@@ -19,36 +20,51 @@ def browser_type_launch_args(browser_type_launch_args):
     return {
         **browser_type_launch_args,
         "headless": headless,
-        "traces_dir": playwright_traces_dir
+        "traces_dir": playwright_traces_dir,
+        "args": browserargs,
+        "channel": browsername
     }
 
 @pytest.fixture(scope="session")
 def browser_type(playwright : Playwright):
-    if browsername == 'Chrome':
+    if 'chrome' in browsername:
         browser_type = playwright.chromium
-    elif browsername == 'Firefox':
+    elif 'edge' in browsername:
+        browser_type = playwright.chromium
+    elif 'firefox' in browsername:
         browser_type = playwright.firefox
     else:
         browser_type = playwright.webkit
     yield browser_type
 
 @pytest.fixture(scope="session")
-def context(
+def browser(
     browser_type: BrowserType,
-    browser_type_launch_args: Dict,
-    browser_context_args: Dict
+    browser_type_launch_args: Dict
 ):
     browser = browser_type.launch(**{
         **browser_type_launch_args,
     })
+    yield browser
+    browser.close() 
+
+@pytest.fixture(scope="function")
+def context(
+    browser: Browser,
+    browser_context_args: Dict
+):
     context = browser.new_context(**{
         **browser_context_args,
     })
     yield context
     context.close()
-    browser.close()
 
-@pytest.fixture(scope="session")
+@pytest.fixture(scope="function")
 def page(context:BrowserContext):
     page = context.new_page()
     yield page
+
+@pytest.fixture(scope="function")
+def base(page:Page):
+    basec = baseclass(page)
+    yield basec

@@ -1,0 +1,20 @@
+{
+    "parabankurl_local" : "https://parabank.parasoft.com/parabank/index.htm",
+    "parabankurl_vm" : "https://parabank.parasoft.com/parabank/index.htm",
+    "Registration":{
+        "FirstName":"Jap", 
+        "LastName":"Pos", 
+        "Address":"sbdhvhf", 
+        "City":"dbngdn", 
+        "State":"dnzh", 
+        "ZipCode":"ngfzfgh", 
+        "Phone":"dngfxdgn", 
+        "SSN":"fgnfgnfg", 
+        "Username":"pokemon", 
+        "Password":"test123"
+    },
+    "Login":{
+        "parabankusername" : "japaneseposeidon5",
+        "parabankpassword" : "test123"
+    }
+}
