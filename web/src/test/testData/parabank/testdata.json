@@ -14,7 +14,8 @@
         "Password":"test123"
     },
     "Login":{
-        "parabankusername" : "japaneseposeidon5",
+        "parabankusernameold" : "japaneseposeidon5",
+        "parabankusername" : "pokemon9988",
         "parabankpassword" : "test123"
     }
 }
