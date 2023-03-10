@@ -20,12 +20,12 @@ jobs:
     steps:
     - uses: actions/checkout@v3
     - name: Get Allure history
-        uses: actions/checkout@v3
-        if: always()
-        continue-on-error: true
-        with:
-          ref: gh-pages
-          path: gh-pages
+      uses: actions/checkout@v2
+      if: always()
+      continue-on-error: true
+      with:
+        ref: gh-pages
+        path: gh-pages
     - name: Set up Python 3.10
       uses: actions/setup-python@v3
       with:
