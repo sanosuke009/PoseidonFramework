@@ -93,8 +93,8 @@ venv\scripts\activate
 ```
 
 ## Troubleshooting Importerror: module not found _greenlet:
-1. Reinstall the Microsoft Visual c++
-Here is the link for downloading [Microsoft Visual c++](https://support.microsoft.com/en-us/topic/the-latest-supported-visual-c-downloads-2647da03-1eea-4433-9aff-95f26a218cc0).
+1. Reinstall the Microsoft Visual C++
+Here is the link for downloading [Microsoft Visual C++](https://support.microsoft.com/en-us/topic/the-latest-supported-visual-c-downloads-2647da03-1eea-4433-9aff-95f26a218cc0).
 2. Restart the system
 3. Reinstall the venv & Python packages
 
