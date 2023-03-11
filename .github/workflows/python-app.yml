@@ -8,6 +8,8 @@ on:
     branches: [ "master", "dev_sroy" ]
   pull_request:
     branches: [ "master" ]
+  schedule: ## Schedule the job to run at 12.am daily.
+    - cron: '*/6 * * * *'
 
 permissions:
   contents: write
