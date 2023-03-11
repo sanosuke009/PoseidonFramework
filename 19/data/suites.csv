@@ -1,0 +1,4 @@
+"Status","Start Time","Stop Time","Duration in ms","Parent Suite","Suite","Sub Suite","Test Class","Test Method","Name","Description"
+"passed","Sat Mar 11 11:54:32 GMT 2023","Sat Mar 11 11:54:35 GMT 2023","2826","src.test.testcases","test_parabank_login","","","","test_web_login",""
+"passed","Sat Mar 11 11:54:36 GMT 2023","Sat Mar 11 11:54:37 GMT 2023","1667","src.test.testcases","test_parabank_registration","","","","test_web_registration",""
+"passed","Sat Mar 11 11:54:32 GMT 2023","Sat Mar 11 11:54:35 GMT 2023","2761","src.test.testcases","test_parabank_login","","","","test_web_login_again",""
