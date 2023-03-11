@@ -9,7 +9,7 @@ on:
   pull_request:
     branches: [ "master" ]
   schedule: ## Schedule the job to run at 12.am daily.
-    - cron: '*/6 * * * *'
+    - cron: '0 */2 * * *'
 
 permissions:
   contents: write
