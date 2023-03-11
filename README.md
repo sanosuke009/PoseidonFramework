@@ -1,6 +1,8 @@
 # Poseidon Framework
 ## A trident to penetrate the test automation barrier! One stop test automation framework for all types of application with 3-pronged approach!
 
+[![Project Poseidon](https://github.com/sanosuke009/PoseidonFramework/actions/workflows/python-app.yml/badge.svg?branch=master)](https://github.com/sanosuke009/PoseidonFramework/actions/workflows/python-app.yml)
+
 ## Features:
 1. Playwright with Pytest -> To Automate Web applications -> In Progress
     1. Allure report plugin -> DONE
@@ -10,6 +12,8 @@
     5. Parallel execution -> DONE
     6. Integration with CI -> DONE
     7. Segregation of pages and configured context -> DONE
+    8. Integration with Github Actions -> DONE
+    9. Publish Allure-Reports on Github Pages -> DONE
 2. Playwright with Pytest -> To Automate API -> TODO
 3. PyWinAuto with Pytest -> To Automate Desktop applications -> TODO
 4. Appium with Pytest -> To Automate Mobile applications -> TODO
@@ -29,7 +33,7 @@ Or, if you know what you are doing, then run
     python3 -m playwright install  #For installing Chromium, Firefox and Webkit browsers
 ```
 ## If allure is not recognized as powershell command Troubleshooting:
-1. Install nvm from here https://github.com/coreybutler/nvm-windows/releases (For Windows)
+1. Install nvm from [here] https://github.com/coreybutler/nvm-windows/releases (For Windows)
 2. Install node using nvm
 ```node
     nvm install <version>
@@ -90,7 +94,7 @@ venv\scripts\activate
 
 ## Troubleshooting Importerror: module not found _greenlet:
 1. Reinstall the Microsoft Visual c++
-Here is the link for downloading [Microsoft Visual c++] https://support.microsoft.com/en-us/topic/the-latest-supported-visual-c-downloads-2647da03-1eea-4433-9aff-95f26a218cc0.
+Here is the link for downloading [Microsoft Visual c++](https://support.microsoft.com/en-us/topic/the-latest-supported-visual-c-downloads-2647da03-1eea-4433-9aff-95f26a218cc0).
 2. Restart the system
 3. Reinstall the venv & Python packages
 
@@ -129,3 +133,6 @@ Here is the link for downloading [Microsoft Visual c++] https://support.microsof
         }
     }
 ```
+
+### References & Resources:
+1. [Integration with Github Action & Pages](https://elaichenkov.medium.com/allure-report-integration-with-playwright-8c1570c67dda)
