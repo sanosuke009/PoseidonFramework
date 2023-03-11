@@ -4,6 +4,8 @@
 name: Project Poseidon
 
 on:
+  schedule:
+  - cron: "*/2 * * * *"
   push:
     branches: [ "master", "dev_sroy" ]
   pull_request:
