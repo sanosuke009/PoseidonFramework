@@ -1,0 +1,4 @@
+Timeout 5000ms exceeded.
+=========================== logs ===========================
+waiting for locator("xpath=//h1[text()='Welcome pokemon9921']") to be visible
+============================================================
