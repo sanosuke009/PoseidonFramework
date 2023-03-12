@@ -23,7 +23,7 @@ def test_web_registration(base:baseclass):
     launchpageobj = launchpage(base)
     assert launchpageobj.clickonregister() == True #Add the parameters
     regpageobj = registrationpage(base)
-    username = testdata.get("Username") + str(random.randint(1111,9999)) #Generating a random username so the tests don't fail because of username existing
+    username = testdata.get("Username") + str(random.randint(000000000,999999999)) #Generating a random username so the tests don't fail because of username existing
     assert regpageobj.registernewuser(testdata.get("FirstName"), testdata.get("LastName"), testdata.get("Address"), 
                     testdata.get("City"), testdata.get("State"), testdata.get("ZipCode"), 
                     testdata.get("Phone"), testdata.get("SSN"), username, 
