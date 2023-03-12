@@ -33,7 +33,7 @@ Or, if you know what you are doing, then run
     python3 -m playwright install  #For installing Chromium, Firefox and Webkit browsers
 ```
 ## If allure is not recognized as powershell command Troubleshooting:
-1. Install nvm from [here] https://github.com/coreybutler/nvm-windows/releases (For Windows)
+1. For Windows install nvm from [here](https://github.com/coreybutler/nvm-windows/releases)
 2. Install node using nvm
 ```node
     nvm install <version>
@@ -109,6 +109,7 @@ Here is the link for downloading [Microsoft Visual C++](https://support.microsof
 # TODO:
 1. Debugging using page.pause() & inspector
 2. https://shields.io/
+3. [Cloud hosting on Vercel](https://vercel.com/pricing)
 
 
 
@@ -136,3 +137,6 @@ Here is the link for downloading [Microsoft Visual C++](https://support.microsof
 
 ### References & Resources:
 1. [Integration with Github Action & Pages](https://elaichenkov.medium.com/allure-report-integration-with-playwright-8c1570c67dda)
+2. [Cronjob Help](https://crontab.guru/)
+3. [Scheduling Github Actions](https://docs.github.com/en/actions/using-workflows/events-that-trigger-workflows#schedule)
+4. [Scheduling Blog](https://medium.com/tradeling/how-to-schedule-jobs-using-github-actions-9f32667706ea)
