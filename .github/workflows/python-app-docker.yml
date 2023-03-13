@@ -30,6 +30,8 @@ jobs:
         python-version: "3.10"
     - name: Install dependencies
       run: |
+        sudo apt update
+        sudo apt install libc6
         python3 -m venv /venv
         /venv/scripts/activate
         /venv/scripts/python -m pip install --upgrade pip
