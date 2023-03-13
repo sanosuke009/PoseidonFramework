@@ -30,8 +30,11 @@ jobs:
         python-version: "3.10"
     - name: Install dependencies
       run: |
-        pip install -r local-requirements.txt
-        pip install -e .
+        python -m pip install --upgrade pip
+        python3 -m venv /venv
+        ./venv/scripts/activate
+        python3 -m pip install -r local-requirements.txt
+        python3 -m pip install -e .
     - name: Install the browsers for playwright
       run: |
         python -m playwright install --with-deps
