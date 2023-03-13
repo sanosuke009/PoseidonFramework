@@ -15,7 +15,7 @@ permissions:
   contents: write
 
 jobs:
-  build:
+  playwright:
     name: Docker - Test Parabank with Allure Report
     runs-on: ubuntu-latest
     container:
@@ -40,7 +40,7 @@ jobs:
         python -m playwright install --with-deps
     - name: Test with pytest
       run: |
-        pytest web/src/test/testcases/
+        pytest web/src/test/testcases/youtube/
     - name: Allure gh-page Checkout
       uses: actions/checkout@v3
       if: always()

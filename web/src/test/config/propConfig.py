@@ -3,7 +3,7 @@ reportPath = 'allure-results/'
 implicitwait = 5000
 explicitwait = 5000
 browsername = 'chrome'
-headless = True
+headless = False
 browserargs = ["--start-maximized"]
 
 user_data_dir = "./web/user_data_dir"
@@ -13,3 +13,6 @@ playwright_traces_dir = "./test-results/"
 
 #================Parabank====================
 parabanktestdatafilepath = "./web/src/test/testData/parabank/testdata.json"
+
+#================Youtube======================
+youtubetestdatafilepath = "./web/src/test/testData/youtube/testdata.json"
