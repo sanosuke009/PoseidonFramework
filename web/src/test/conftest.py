@@ -11,8 +11,8 @@ def browser_context_args(browser_context_args):
     return {
         **browser_context_args,
         "ignore_https_errors": True, #For bypassing the http certificate errors
-        "no_viewport": True,
-        "record_video_dir": playwright_videos_dir
+        "no_viewport": True
+        #"record_video_dir": playwright_videos_dir
     }
 
 @pytest.fixture(scope="session")

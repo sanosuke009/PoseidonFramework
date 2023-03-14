@@ -13,3 +13,6 @@ playwright_traces_dir = "./test-results/"
 
 #================Parabank====================
 parabanktestdatafilepath = "./web/src/test/testData/parabank/testdata.json"
+
+#================Youtube======================
+youtubetestdatafilepath = "./web/src/test/testData/youtube/testdata.json"

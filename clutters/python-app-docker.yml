@@ -1,23 +1,25 @@
 # This workflow will install Python dependencies, run tests and lint with a single version of Python
 # For more information see: https://docs.github.com/en/actions/automating-builds-and-tests/building-and-testing-python
 
-name: Project Poseidon
+name: Docker - Project Poseidon
 
 on:
   push:
     branches: [ "master", "dev_sroy" ]
   pull_request:
     branches: [ "master" ]
-  schedule: ## Schedule the job to run at 4.am daily.
+  schedule: ## Schedule the job to run at 6AM daily.
     - cron: '0 4 * * *'
 
 permissions:
   contents: write
 
 jobs:
-  build:
-    name: Test Youtube with Allure Report
+  playwright:
+    name: Docker - Test Parabank with Allure Report
     runs-on: ubuntu-latest
+    container:
+      image: mcr.microsoft.com/playwright:v1.31.1-focal
 
     steps:
     - name: Checking out
@@ -28,17 +30,19 @@ jobs:
         python-version: "3.10"
     - name: Install dependencies
       run: |
-        python -m pip install --upgrade pip
-        python -m pip install pytest-playwright
-        python -m pip install pytest
-        python -m pip install pytest-xdist
-        python -m pip install allure-pytest
+        sudo apt update
+        sudo apt install libc6
+        python3 -m venv /venv
+        /venv/scripts/activate
+        /venv/scripts/python -m pip install --upgrade pip
+        /venv/scripts/python -m pip install -r local-requirements.txt
+        /venv/scripts/python -m pip install -e .
     - name: Install the browsers for playwright
       run: |
-        python -m playwright install --with-deps
+        /venv/scripts/python -m playwright install --with-deps
     - name: Test with pytest
       run: |
-        pytest web/src/test/testcases/youtube
+        /venv/scripts/pytest web/src/test/testcases/youtube/
     - name: Allure gh-page Checkout
       uses: actions/checkout@v3
       if: always()
@@ -63,13 +67,8 @@ jobs:
         PERSONAL_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         PUBLISH_BRANCH: gh-pages
         PUBLISH_DIR: allure-history
-
-    # - name: Post the link to the report
-    #   if: always()
-    #   uses: Sibz/github-status-action@v1
-    #   with: 
-    #       authToken: ${{secrets.GITHUB_TOKEN}}
-    #       context: 'Test report'
-    #       state: 'success'
-    #       sha: ${{ github.event.pull_request.head.sha }}
-    #       target_url: simple-elf.github.io/github-allure-history/${{ github.run_number }}
+        # python -m pip install --upgrade pip
+        # python -m pip install pytest-playwright
+        # python -m pip install pytest
+        # python -m pip install pytest-xdist
+        # python -m pip install allure-pytest

@@ -16,7 +16,7 @@ permissions:
 
 jobs:
   build:
-    name: Test Youtube with Allure Report
+    name: Test Parabank with Allure Report
     runs-on: ubuntu-latest
 
     steps:
@@ -29,7 +29,7 @@ jobs:
     - name: Install dependencies
       run: |
         python -m pip install --upgrade pip
-        python -m pip install pytest-playwright
+        pip install flake8 pytest-playwright
         python -m pip install pytest
         python -m pip install pytest-xdist
         python -m pip install allure-pytest
@@ -38,7 +38,7 @@ jobs:
         python -m playwright install --with-deps
     - name: Test with pytest
       run: |
-        pytest web/src/test/testcases/youtube
+        pytest web/src/test/testcases/
     - name: Allure gh-page Checkout
       uses: actions/checkout@v3
       if: always()
