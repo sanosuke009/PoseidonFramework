@@ -1,0 +1,7 @@
+"Status","Start Time","Stop Time","Duration in ms","Parent Suite","Suite","Sub Suite","Test Class","Test Method","Name","Description"
+"passed","Tue Mar 14 07:18:32 GMT 2023","Tue Mar 14 07:18:39 GMT 2023","6348","src.test.testcases.youtube","test_youtube_hits","","","","test_web_login[AamShol]",""
+"passed","Tue Mar 14 07:18:39 GMT 2023","Tue Mar 14 07:18:45 GMT 2023","6171","src.test.testcases.youtube","test_youtube_hits","","","","test_web_login[Quail]",""
+"passed","Tue Mar 14 07:18:45 GMT 2023","Tue Mar 14 07:18:51 GMT 2023","6231","src.test.testcases.youtube","test_youtube_hits","","","","test_web_login[CHAKA]",""
+"passed","Tue Mar 14 07:18:32 GMT 2023","Tue Mar 14 07:18:39 GMT 2023","6510","src.test.testcases.youtube","test_youtube_hits","","","","test_web_login[gulmoharreview]",""
+"passed","Tue Mar 14 07:18:45 GMT 2023","Tue Mar 14 07:18:51 GMT 2023","5790","src.test.testcases.youtube","test_youtube_hits","","","","test_web_login[RedRiverValley]",""
+"passed","Tue Mar 14 07:18:39 GMT 2023","Tue Mar 14 07:18:45 GMT 2023","6087","src.test.testcases.youtube","test_youtube_hits","","","","test_web_login[ordinary_review]",""
