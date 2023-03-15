@@ -39,6 +39,7 @@ jobs:
     - name: Test with pytest
       run: |
         pytest web/src/test/testcases/youtube
+        pytest api/src/test/testcases/catAPI
     - name: Allure gh-page Checkout
       uses: actions/checkout@v3
       if: always()
