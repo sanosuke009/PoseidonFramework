@@ -1,0 +1,5 @@
+{
+    "getrandomcatimage":{
+        "url_tail":"/v1/images/search"
+    }
+}

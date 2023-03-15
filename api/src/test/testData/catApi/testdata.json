@@ -1,0 +1,29 @@
+{
+    "getrandomcatimage":{
+        "url_tail":"/v1/images/search"
+    },
+    "getcatimagebyid":{
+        "url_tail":"/v1/images/",
+        "id":"dmq",
+        "response":{
+            "id": "dmq",
+            "url": "https://cdn2.thecatapi.com/images/dmq.jpg",
+            "width": 500,
+            "height": 350
+        }
+    },
+    "postfavoutite":{
+        "url_tail":"/v1/favourites",
+        "payload" : {"image_id":"dmq","sub_id": "my-user-1234"},
+        "expectedresponsecode":200
+    },
+    "deletefavoutite":{
+        "url_tail":"/v1/favourites",
+        "id":"101310575",
+        "expectedresponsecode":200
+    },
+    "getallfavorites":{
+        "url_tail":"/v1/favourites",
+        "expectedresponsecode":200
+    }
+}
