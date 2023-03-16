@@ -39,8 +39,7 @@ jobs:
     - name: Test with pytest
       run: |
         pytest web/src/test/testcases/youtube
-        
-      #pytest api/src/test/testcases/catAPI
+        pytest api/src/test/testcases/catAPI
     - name: Upload artifact
       if: always()
       uses: actions/upload-artifact@master
@@ -75,10 +74,8 @@ jobs:
     - name: Test with pytest
       shell: pwsh
       run: |
-        
         pytest api/src/test/testcases/catAPI
-
-      #pytest web/src/test/testcases/youtube
+        pytest web/src/test/testcases/youtube
     - name: Upload artifact
       if: always()
       uses: actions/upload-artifact@master
@@ -120,11 +117,11 @@ jobs:
         path: allure-results/*
         retention-days: 30
 
-  macos-generate-allure-report:
+  generate-allure-report:
     name: MacOS Generate Allure Report
     runs-on: ubuntu-latest
     if: always()
-    needs: [ macos-youtube-catapi-tests ]
+    needs: [ ubuntu-youtube-catapi-tests, windows-youtube-catapi-tests, macos-youtube-catapi-tests ]
     steps:
     - name: Download Artifacts
       uses: actions/download-artifact@v3
