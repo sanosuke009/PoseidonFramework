@@ -48,7 +48,7 @@ jobs:
         path: allure-results
         retention-days: 30
 
-  generate-allure-report:
+  ubuntu-generate-allure-report:
     name: Ubuntu Generate Allure Report
     runs-on: ubuntu-latest
     if: always()
@@ -121,7 +121,7 @@ jobs:
         path: allure-results
         retention-days: 30
 
-  generate-allure-report:
+  windows-generate-allure-report:
     name: Windows Generate Allure Report
     runs-on: ubuntu-latest
     if: always()
@@ -191,7 +191,7 @@ jobs:
         path: allure-results
         retention-days: 30
 
-  generate-allure-report:
+  macos-generate-allure-report:
     name: MacOS Generate Allure Report
     runs-on: ubuntu-latest
     if: always()
