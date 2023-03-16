@@ -45,7 +45,7 @@ jobs:
       uses: actions/upload-artifact@master
       with:
         name: allure-results
-        path: build/allure-results
+        path: allure-results
         retention-days: 30
 
   windows-youtube-catapi-tests:
@@ -81,7 +81,7 @@ jobs:
       uses: actions/upload-artifact@master
       with:
         name: allure-results
-        path: build/allure-results
+        path: allure-results
         retention-days: 30
 
   macos-youtube-catapi-tests:
@@ -114,7 +114,7 @@ jobs:
       uses: actions/upload-artifact@master
       with:
         name: allure-results
-        path: build/allure-results
+        path: allure-results
         retention-days: 30
 
   generate-allure-report:
