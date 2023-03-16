@@ -8,15 +8,15 @@ on:
     branches: [ "master", "dev_sroy" ]
   pull_request:
     branches: [ "master" ]
-  schedule: ## At every 30th minute past every hour from 2 through 10. Schedule the job to run at 4.am daily. '0 4 * * *' 
-    - cron: '*/30 2-10 * * *'
+  schedule: ## Schedule the job to run at 4.am daily.
+    - cron: '0 4 * * *'
 
 permissions:
   contents: write
 
 jobs:
   ubuntu-youtube-catapi-tests:
-    name: Ubuntu - Test Youtube & Cat API
+    name: Ubuntu - Test Youtube & Cat API with Allure Report
     runs-on: ubuntu-latest
 
     steps:
@@ -40,16 +40,33 @@ jobs:
       run: |
         pytest web/src/test/testcases/youtube
         pytest api/src/test/testcases/catAPI
-    - name: Upload artifact
+    - name: Allure gh-page Checkout
+      uses: actions/checkout@v3
       if: always()
-      uses: actions/upload-artifact@master
+      continue-on-error: true
       with:
-        name: allure-results
-        path: allure-results/*
-        retention-days: 30
+        ref: gh-pages
+        path: gh-pages
+    - name: Test marketplace action
+      uses: simple-elf/allure-report-action@master
+      if: always()
+      id: allure-report
+      with:
+        allure_results: allure-results
+        gh_pages: gh-pages
+        allure_report: allure-report
+        allure_history: allure-history
+        keep_reports: 20
+    - name: Deploy report to Github Pages
+      if: always()
+      uses: peaceiris/actions-gh-pages@v2
+      env:
+        PERSONAL_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        PUBLISH_BRANCH: gh-pages
+        PUBLISH_DIR: allure-history
 
   windows-youtube-catapi-tests:
-    name: Windows - Test Youtube & Cat API
+    name: Windows - Test Youtube & Cat API with Allure Report
     runs-on: windows-latest
 
     steps:
@@ -74,18 +91,35 @@ jobs:
     - name: Test with pytest
       shell: pwsh
       run: |
-        pytest api/src/test/testcases/catAPI
         pytest web/src/test/testcases/youtube
-    - name: Upload artifact
+        pytest api/src/test/testcases/catAPI
+    - name: Allure gh-page Checkout
+      uses: actions/checkout@v3
       if: always()
-      uses: actions/upload-artifact@master
+      continue-on-error: true
       with:
-        name: allure-results
-        path: allure-results/*
-        retention-days: 30
+        ref: gh-pages
+        path: gh-pages
+    - name: Test marketplace action
+      uses: simple-elf/allure-report-action@master
+      if: always()
+      id: allure-report
+      with:
+        allure_results: allure-results
+        gh_pages: gh-pages
+        allure_report: allure-report
+        allure_history: allure-history
+        keep_reports: 20
+    - name: Deploy report to Github Pages
+      if: always()
+      uses: peaceiris/actions-gh-pages@v2
+      env:
+        PERSONAL_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        PUBLISH_BRANCH: gh-pages
+        PUBLISH_DIR: allure-history
 
   macos-youtube-catapi-tests:
-    name: MacOS - Test Youtube & Cat API
+    name: MacOS - Test Youtube & Cat API with Allure Report
     runs-on: macos-latest
 
     steps:
@@ -109,26 +143,6 @@ jobs:
       run: |
         pytest web/src/test/testcases/youtube
         pytest api/src/test/testcases/catAPI
-    - name: Upload artifact
-      if: always()
-      uses: actions/upload-artifact@master
-      with:
-        name: allure-results
-        path: allure-results/*
-        retention-days: 30
-
-  generate-allure-report:
-    name: MacOS Generate Allure Report
-    runs-on: ubuntu-latest
-    if: always()
-    needs: [ ubuntu-youtube-catapi-tests, windows-youtube-catapi-tests, macos-youtube-catapi-tests ]
-    steps:
-    - name: Download Artifacts
-      uses: actions/download-artifact@v3
-      id: download
-      with:
-        name: allure-results
-        path: allure-results
     - name: Allure gh-page Checkout
       uses: actions/checkout@v3
       if: always()
@@ -136,7 +150,57 @@ jobs:
       with:
         ref: gh-pages
         path: gh-pages
-    - name: Setting Allure-Report Action
+    - name: Test marketplace action
+      uses: simple-elf/allure-report-action@master
+      if: always()
+      id: allure-report
+      with:
+        allure_results: allure-results
+        gh_pages: gh-pages
+        allure_report: allure-report
+        allure_history: allure-history
+        keep_reports: 20
+    - name: Deploy report to Github Pages
+      if: always()
+      uses: peaceiris/actions-gh-pages@v2
+      env:
+        PERSONAL_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        PUBLISH_BRANCH: gh-pages
+        PUBLISH_DIR: allure-history
+
+  generate-allure-report:
+    name: Ubuntu - Test Youtube & Cat API with Allure Report
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checking out
+      uses: actions/checkout@v3
+    - name: Set up Python 3.10
+      uses: actions/setup-python@v3
+      with:
+        python-version: "3.10"
+    - name: Install dependencies
+      run: |
+        python -m pip install --upgrade pip
+        python -m pip install pytest-playwright
+        python -m pip install pytest
+        python -m pip install pytest-xdist
+        python -m pip install allure-pytest
+    - name: Install the browsers for playwright
+      run: |
+        python -m playwright install --with-deps
+    - name: Test with pytest
+      run: |
+        pytest web/src/test/testcases/youtube
+        pytest api/src/test/testcases/catAPI
+    - name: Allure gh-page Checkout
+      uses: actions/checkout@v3
+      if: always()
+      continue-on-error: true
+      with:
+        ref: gh-pages
+        path: gh-pages
+    - name: Test marketplace action
       uses: simple-elf/allure-report-action@master
       if: always()
       id: allure-report
