@@ -30,6 +30,7 @@ Or, if you know what you are doing, then run
     python3 -m pip install pytest-xdist
     python3 -m pip install allure-pytest
     python3 -m pip install pytest-playwright
+    python -m pip install pytest-rerunfailures
     python3 -m playwright install  #For installing Chromium, Firefox and Webkit browsers
 ```
 ## If allure is not recognized as powershell command Troubleshooting:

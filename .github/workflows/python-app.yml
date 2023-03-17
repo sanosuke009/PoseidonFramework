@@ -29,10 +29,7 @@ jobs:
     - name: Install dependencies
       run: |
         python -m pip install --upgrade pip
-        python -m pip install pytest-playwright
-        python -m pip install pytest
-        python -m pip install pytest-xdist
-        python -m pip install allure-pytest
+        python -m pip install -r requirements.txt
     - name: Install the browsers for playwright
       run: |
         python -m playwright install --with-deps
@@ -47,11 +44,49 @@ jobs:
         name: allure-results
         path: allure-results/*
         retention-days: 30
+
+  ubuntu-generate-allure-report:
+    name: Ubuntu Generate Allure Report
+    runs-on: ubuntu-latest
+    if: always()
+    needs: [ ubuntu-youtube-catapi-tests ]
+    steps:
+    - name: Download Artifacts
+      uses: actions/download-artifact@v3
+      id: download
+      with:
+        name: allure-results
+        path: allure-results
+    - name: Allure gh-page Checkout
+      uses: actions/checkout@v3
+      if: always()
+      continue-on-error: true
+      with:
+        ref: gh-pages
+        path: gh-pages
+    - name: Setting Allure-Report Action
+      uses: simple-elf/allure-report-action@master
+      if: always()
+      id: allure-report
+      with:
+        allure_results: allure-results
+        gh_pages: gh-pages
+        allure_report: allure-report
+        allure_history: allure-history
+        keep_reports: 20
+    - name: Deploy report to Github Pages
+      if: always()
+      uses: peaceiris/actions-gh-pages@v2
+      env:
+        PERSONAL_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        PUBLISH_BRANCH: gh-pages
+        PUBLISH_DIR: allure-history
 
   windows-youtube-catapi-tests:
     name: Windows - Test Youtube & Cat API
     runs-on: windows-latest
-
+    if: always()
+    needs: [ ubuntu-generate-allure-report ]
     steps:
     - name: Checking out
       uses: actions/checkout@v3
@@ -63,10 +98,7 @@ jobs:
       shell: pwsh
       run: |
         python -m pip install --upgrade pip
-        python -m pip install pytest-playwright
-        python -m pip install pytest
-        python -m pip install pytest-xdist
-        python -m pip install allure-pytest
+        python -m pip install -r requirements.txt
     - name: Install the browsers for playwright
       shell: pwsh
       run: |
@@ -83,11 +115,49 @@ jobs:
         name: allure-results
         path: allure-results/*
         retention-days: 30
+
+  windows-generate-allure-report:
+    name: Windows Generate Allure Report
+    runs-on: ubuntu-latest
+    if: always()
+    needs: [ windows-youtube-catapi-tests ]
+    steps:
+    - name: Download Artifacts
+      uses: actions/download-artifact@v3
+      id: download
+      with:
+        name: allure-results
+        path: allure-results
+    - name: Allure gh-page Checkout
+      uses: actions/checkout@v3
+      if: always()
+      continue-on-error: true
+      with:
+        ref: gh-pages
+        path: gh-pages
+    - name: Setting Allure-Report Action
+      uses: simple-elf/allure-report-action@master
+      if: always()
+      id: allure-report
+      with:
+        allure_results: allure-results
+        gh_pages: gh-pages
+        allure_report: allure-report
+        allure_history: allure-history
+        keep_reports: 20
+    - name: Deploy report to Github Pages
+      if: always()
+      uses: peaceiris/actions-gh-pages@v2
+      env:
+        PERSONAL_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        PUBLISH_BRANCH: gh-pages
+        PUBLISH_DIR: allure-history
 
   macos-youtube-catapi-tests:
     name: MacOS - Test Youtube & Cat API
     runs-on: macos-latest
-
+    if: always()
+    needs: [ windows-generate-allure-report ]
     steps:
     - name: Checking out
       uses: actions/checkout@v3
@@ -98,10 +168,7 @@ jobs:
     - name: Install dependencies
       run: |
         python -m pip install --upgrade pip
-        python -m pip install pytest-playwright
-        python -m pip install pytest
-        python -m pip install pytest-xdist
-        python -m pip install allure-pytest
+        python -m pip install -r requirements.txt
     - name: Install the browsers for playwright
       run: |
         python -m playwright install --with-deps
@@ -114,14 +181,14 @@ jobs:
       uses: actions/upload-artifact@master
       with:
         name: allure-results
-        path: allure-results/*
+        path: allure-results
         retention-days: 30
 
-  generate-allure-report:
+  macos-generate-allure-report:
     name: MacOS Generate Allure Report
     runs-on: ubuntu-latest
     if: always()
-    needs: [ ubuntu-youtube-catapi-tests, windows-youtube-catapi-tests, macos-youtube-catapi-tests ]
+    needs: [ macos-youtube-catapi-tests ]
     steps:
     - name: Download Artifacts
       uses: actions/download-artifact@v3
