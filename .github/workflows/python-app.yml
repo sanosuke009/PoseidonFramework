@@ -43,7 +43,7 @@ jobs:
       if: always()
       uses: actions/upload-artifact@master
       with:
-        name: allure-results-ubunutu
+        name: allure-results-ubuntu
         path: allure-results/*
         retention-days: 30
 
