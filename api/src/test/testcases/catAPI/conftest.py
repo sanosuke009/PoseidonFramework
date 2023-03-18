@@ -1,5 +1,6 @@
 
 from typing import Generator
+import os
 
 import pytest
 from playwright.sync_api import Playwright, APIRequestContext
@@ -8,7 +9,7 @@ from api.src.test.baseClass.baseclass import baseclass
 #==================Global Variables For Cat API================================================
 CAT_API_BASE_URL = "https://api.thecatapi.com"
 CAT_API_TOKEN_KEY = "x-api-key"
-CAT_API_TOKEN_VALUE = "live_CLiPEgDaZzLbzU4YXWXmjA7cVypNVrElt3g7nV1FNQ3cc1xQsL8AmqD3GMx0slt2"
+CAT_API_TOKEN_VALUE = os.environ['CAT_API_KEY'] #Retrieve the secret from Github Secrets
 catapitestdatafile = "./api/src/test/testData/catApi/testdata.json"
 #=============================================================================================
 
