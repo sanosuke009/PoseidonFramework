@@ -124,19 +124,19 @@ jobs:
     steps:
     - name: Download Artifacts from Ubuntu
       uses: actions/download-artifact@v3
-      id: download
+      id: download-ubuntu
       with:
         name: allure-results-ubuntu
         path: allure-results-ubuntu
     - name: Download Artifacts from Windows
       uses: actions/download-artifact@v3
-      id: download
+      id: download-windows
       with:
         name: allure-results-windows
         path: allure-results-windows
     - name: Download Artifacts from MacOS
       uses: actions/download-artifact@v3
-      id: download
+      id: download-macos
       with:
         name: allure-results-macos
         path: allure-results-macos
