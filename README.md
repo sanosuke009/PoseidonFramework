@@ -14,7 +14,9 @@
     7. Segregation of pages and configured context -> DONE
     8. Integration with Github Actions -> DONE
     9. Publish Allure-Reports on Github Pages -> DONE
-2. Playwright with Pytest -> To Automate API -> TODO
+    10. Add Visual Test Automation -> DONE
+    11. Add Visual Test Result in Allure Report -> TODO
+2. Playwright with Pytest -> To Automate API -> DONE
 3. PyWinAuto with Pytest -> To Automate Desktop applications -> TODO
 4. Appium with Pytest -> To Automate Mobile applications -> TODO
 
@@ -31,6 +33,7 @@ Or, if you know what you are doing, then run
     python3 -m pip install allure-pytest
     python3 -m pip install pytest-playwright
     python -m pip install pytest-rerunfailures
+    python -m pip install pytest-playwright-visual
     python3 -m playwright install  #For installing Chromium, Firefox and Webkit browsers
 ```
 ## If allure is not recognized as powershell command Troubleshooting:
