@@ -65,6 +65,6 @@ def page(context:BrowserContext):
     yield page
 
 @pytest.fixture(scope="function")
-def base(page:Page):
-    basec = baseclass(page)
+def base(page:Page, assert_snapshot):
+    basec = baseclass(page, assert_snapshot)
     yield basec
