@@ -7,9 +7,9 @@ from web.src.test.managers.testdatamanager import testdatamanager
 
 class baseclass:
 
-    def __init__(self, page:Page, assert_snapshot) -> None:
+    def __init__(self, page:Page) -> None:
         self.rm = resultmanager(page)
-        self.visual = visualtestmanager(page, assert_snapshot)
+        self.visual = visualtestmanager(page)
         self.page = page
 
     def settestdatamanager(self, testdatafilepath):
