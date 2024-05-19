@@ -46,6 +46,7 @@ Or, if you know what you are doing, then run
     Set-ExecutionPolicy RemoteSigned -Scope CurrentUser
 ```
 4. Now allure serve command should work
+5. If you are getting JAVA_HOME not set error, then you need to install Java as well from [here](https://www.oracle.com/in/java/technologies/downloads/) and set JAVA_HOME="C:\Program Files\Java\jdkxxx.xx.xx" in the environment variables.
 
 ## VENV Troubleshooting:
 In VSCode, there is no default option to create virtual environment in Python. So follow below steps to create one:
@@ -141,3 +142,4 @@ Here is the link for downloading [Microsoft Visual C++](https://support.microsof
 2. [Cronjob Help](https://crontab.guru/)
 3. [Scheduling Github Actions](https://docs.github.com/en/actions/using-workflows/events-that-trigger-workflows#schedule)
 4. [Scheduling Blog](https://medium.com/tradeling/how-to-schedule-jobs-using-github-actions-9f32667706ea)
+5. [JAVA_HOME Troubleshooting](https://stackoverflow.com/questions/45182717/java-home-is-set-to-an-invalid-directory)

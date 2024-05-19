@@ -8,8 +8,8 @@ on:
     branches: [ "master", "dev_sroy" ]
   pull_request:
     branches: [ "master" ]
-  schedule: ## At every 30th minute past every hour from 2 through 10. Schedule the job to run at 4.am daily. '0 4 * * *' 
-    - cron: '*/30 2-10 * * *'
+  ##schedule: ## At every 30th minute past every hour from 2 through 10. Schedule the job to run at 4.am daily. '0 4 * * *' 
+  ##  - cron: '*/30 2-10 * * *'
 
 permissions:
   contents: write
@@ -45,7 +45,7 @@ jobs:
       with:
         name: allure-results
         path: allure-results/*
-        retention-days: 30
+        retention-days: 1
 
   ubuntu-generate-allure-report:
     name: Ubuntu Generate Allure Report
@@ -118,7 +118,7 @@ jobs:
       with:
         name: allure-results
         path: allure-results/*
-        retention-days: 30
+        retention-days: 1
 
   windows-generate-allure-report:
     name: Windows Generate Allure Report
@@ -188,7 +188,7 @@ jobs:
       with:
         name: allure-results
         path: allure-results
-        retention-days: 30
+        retention-days: 1
 
   macos-generate-allure-report:
     name: MacOS Generate Allure Report
