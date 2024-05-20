@@ -8,8 +8,8 @@ on:
     branches: [ "master", "dev_sroy", "poc_sroy" ]
   pull_request:
     branches: [ "master" ]
-  schedule: ## At every 30th minute past every hour from 2 through 10. Schedule the job to run at 4.am daily. '0 4 * * *' 
-    - cron: '*/30 2-10 * * *'
+  #schedule: ## At every 30th minute past every hour from 2 through 10. Schedule the job to run at 4.am daily. '0 4 * * *' 
+  #  - cron: '*/30 2-10 * * *'
 
 permissions:
   contents: write
@@ -45,7 +45,7 @@ jobs:
       with:
         name: allure-results-ubuntu
         path: allure-results/*
-        retention-days: 30
+        retention-days: 1
 
   windows-youtube-catapi-tests:
     name: Windows - Test Youtube & Cat API
@@ -81,7 +81,7 @@ jobs:
       with:
         name: allure-results-windows
         path: allure-results/*
-        retention-days: 30
+        retention-days: 1
 
   macos-youtube-catapi-tests:
     name: MacOS - Test Youtube & Cat API
@@ -114,7 +114,7 @@ jobs:
       with:
         name: allure-results-macos
         path: allure-results
-        retention-days: 30
+        retention-days: 1
 
   generate-allure-report:
     name: Generate Allure Report
