@@ -3,7 +3,7 @@ reportPath = 'allure-results/'
 implicitwait = 5000
 explicitwait = 5000
 browsername = 'webkit'
-headless = False
+headless = True
 browserargs = ["--start-maximized"]
 
 user_data_dir = "./web/user_data_dir"
