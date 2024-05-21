@@ -91,7 +91,7 @@ jobs:
     steps:
     - name: Checking out
       uses: actions/checkout@v4
-    - name: Set up Python 3.10
+    - name: Set up Python 3.12
       uses: actions/setup-python@v5
       with:
         python-version: "3.12"
@@ -104,10 +104,10 @@ jobs:
         python -m playwright install --with-deps
     - name: Test with pytest
       env:
-          CAT_API_KEY: ${{ secrets.CAT_API_KEY }}
+        CAT_API_KEY: ${{ secrets.CAT_API_KEY }}
       run: |
-        pytest web/src/test/testcases/youtube
         pytest api/src/test/testcases/catAPI
+        pytest web/src/test/testcases/youtube
     - name: Upload artifact
       if: always()
       uses: actions/upload-artifact@master
