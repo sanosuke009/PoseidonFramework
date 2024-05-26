@@ -8,8 +8,8 @@ on:
     branches: [ "master", "dev_sroy", "poc_sroy" ]
   pull_request:
     branches: [ "master" ]
-  schedule: ## At every 30th minute past every hour from 2 through 10. Schedule the job to run at 4.am daily. '0 4 * * *' 
-    - cron: '*/30 2-10 * * *'
+  #schedule: ## At every 30th minute past every hour from 2 through 10. Schedule the job to run at 4.am daily. '0 4 * * *' 
+  #  - cron: '*/30 2-10 * * *'
 
 permissions:
   contents: write
@@ -41,11 +41,11 @@ jobs:
         pytest api/src/test/testcases/catAPI
     - name: Upload artifact
       if: always()
-      uses: actions/upload-artifact@master
+      uses: actions/upload-artifact@v4
       with:
         name: allure-results-ubuntu
         path: allure-results/*
-        retention-days: 30
+        retention-days: 1
 
   windows-youtube-catapi-tests:
     name: Windows - Test Youtube & Cat API
@@ -77,11 +77,11 @@ jobs:
         pytest web/src/test/testcases/youtube
     - name: Upload artifact
       if: always()
-      uses: actions/upload-artifact@master
+      uses: actions/upload-artifact@v4
       with:
         name: allure-results-windows
         path: allure-results/*
-        retention-days: 30
+        retention-days: 1
 
   macos-youtube-catapi-tests:
     name: MacOS - Test Youtube & Cat API
@@ -90,11 +90,11 @@ jobs:
     needs: [ windows-youtube-catapi-tests ]
     steps:
     - name: Checking out
-      uses: actions/checkout@v3
-    - name: Set up Python 3.10
-      uses: actions/setup-python@v3
+      uses: actions/checkout@v4
+    - name: Set up Python 3.12
+      uses: actions/setup-python@v5
       with:
-        python-version: "3.10"
+        python-version: "3.12"
     - name: Install dependencies
       run: |
         python -m pip install --upgrade pip
@@ -104,17 +104,17 @@ jobs:
         python -m playwright install --with-deps
     - name: Test with pytest
       env:
-          CAT_API_KEY: ${{ secrets.CAT_API_KEY }}
+        CAT_API_KEY: ${{ secrets.CAT_API_KEY }}
       run: |
-        pytest web/src/test/testcases/youtube
         pytest api/src/test/testcases/catAPI
+        pytest web/src/test/testcases/youtube
     - name: Upload artifact
       if: always()
-      uses: actions/upload-artifact@master
+      uses: actions/upload-artifact@v4
       with:
         name: allure-results-macos
         path: allure-results
-        retention-days: 30
+        retention-days: 1
 
   generate-allure-report:
     name: Generate Allure Report
@@ -123,19 +123,19 @@ jobs:
     needs: [ macos-youtube-catapi-tests ]
     steps:
     - name: Download Artifacts from Ubuntu
-      uses: actions/download-artifact@v3
+      uses: actions/download-artifact@v4
       id: download-ubuntu
       with:
         name: allure-results-ubuntu
         path: allure-results-ubuntu
     - name: Download Artifacts from Windows
-      uses: actions/download-artifact@v3
+      uses: actions/download-artifact@v4
       id: download-windows
       with:
         name: allure-results-windows
         path: allure-results-windows
     - name: Download Artifacts from MacOS
-      uses: actions/download-artifact@v3
+      uses: actions/download-artifact@v4
       id: download-macos
       with:
         name: allure-results-macos

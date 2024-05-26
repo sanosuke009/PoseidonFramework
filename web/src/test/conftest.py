@@ -61,6 +61,7 @@ def context(
 
 @pytest.fixture(scope="function")
 def page(context:BrowserContext):
+    context.set_default_timeout(120000)
     page = context.new_page()
     yield page
 
