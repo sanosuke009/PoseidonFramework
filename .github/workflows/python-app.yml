@@ -41,7 +41,7 @@ jobs:
         pytest api/src/test/testcases/catAPI
     - name: Upload artifact
       if: always()
-      uses: actions/upload-artifact@master
+      uses: actions/upload-artifact@v4
       with:
         name: allure-results-ubuntu
         path: allure-results/*
@@ -77,7 +77,7 @@ jobs:
         pytest web/src/test/testcases/youtube
     - name: Upload artifact
       if: always()
-      uses: actions/upload-artifact@master
+      uses: actions/upload-artifact@v4
       with:
         name: allure-results-windows
         path: allure-results/*
@@ -110,7 +110,7 @@ jobs:
         pytest web/src/test/testcases/youtube
     - name: Upload artifact
       if: always()
-      uses: actions/upload-artifact@master
+      uses: actions/upload-artifact@v4
       with:
         name: allure-results-macos
         path: allure-results
@@ -123,19 +123,19 @@ jobs:
     needs: [ macos-youtube-catapi-tests ]
     steps:
     - name: Download Artifacts from Ubuntu
-      uses: actions/download-artifact@v3
+      uses: actions/download-artifact@v4
       id: download-ubuntu
       with:
         name: allure-results-ubuntu
         path: allure-results-ubuntu
     - name: Download Artifacts from Windows
-      uses: actions/download-artifact@v3
+      uses: actions/download-artifact@v4
       id: download-windows
       with:
         name: allure-results-windows
         path: allure-results-windows
     - name: Download Artifacts from MacOS
-      uses: actions/download-artifact@v3
+      uses: actions/download-artifact@v4
       id: download-macos
       with:
         name: allure-results-macos
