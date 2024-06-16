@@ -11,7 +11,7 @@ def before_each(base:baseclass):
 
 @pytest.mark.parametrize(
     "keyword",
-    ["AamShol", "Quail", "gulmoharreview", "ordinary_review", "CHAKA", "RedRiverValley"],
+    sorted(["AamShol", "Quail", "gulmoharreview", "ordinary_review", "CHAKA", "RedRiverValley"]),
 )
 def test_web_login(base:baseclass, keyword):
     testdata = base.tm.gets(keyword)
