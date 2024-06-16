@@ -5,7 +5,7 @@ name: Project Poseidon
 
 on:
   push:
-    branches: [ "master", "dev_sroy", "poc_sroy" ]
+    branches: [ "master", "dev_sroy", "poc_sroy", "50-problem-with-xdist-while-running-tests-in-parallel-in-windows-vms" ]
   pull_request:
     branches: [ "master" ]
   #schedule: ## At every 30th minute past every hour from 2 through 10. Schedule the job to run at 4.am daily. '0 4 * * *' 
