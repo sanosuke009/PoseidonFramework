@@ -108,6 +108,14 @@ Here is the link for downloading [Microsoft Visual C++](https://support.microsof
     allure serve .\allure-results
 ```
 
+## Docker commands to dockerize and run a few test cases in the image:
+1. Install all the required packages and set up vscode as mentioned above
+2. Run:
+```shell
+    docker build -t <nameoftheimage> .
+    docker run -it sanochuke/poseidonframework-docker-v1 pytest web/src/test/testcases/youtube
+```
+
 # TODO:
 1. Debugging using page.pause() & inspector
 2. https://shields.io/
