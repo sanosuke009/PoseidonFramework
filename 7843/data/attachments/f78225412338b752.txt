@@ -1,0 +1,3 @@
+Sending POST request to uri /v1/favourites
+The status of the POST request is 200
+The json response of the POST request is {'message': 'SUCCESS', 'id': 232475819}
