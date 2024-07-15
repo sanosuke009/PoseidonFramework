@@ -133,3 +133,5 @@ allure-results/*
 test-results/*
 recorded-videos/*
 */user_data_dir/*
+
+.vagrant
