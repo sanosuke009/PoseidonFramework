@@ -1,0 +1,4 @@
+Sending DELETE request to uri /v1/favourites/232477172
+The status of the DELETE request is 200
+The json response of the DELETE request is {'message': 'SUCCESS'}
+The favorite id is 232477172

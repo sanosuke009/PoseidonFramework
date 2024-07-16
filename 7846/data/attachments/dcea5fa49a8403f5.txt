@@ -1,0 +1,3 @@
+Sending GET request to uri /v1/images/search
+The status of the GET request is 200
+The json response of the GET request is [{'breeds': [], 'id': 'MTc4Mzc3MA', 'url': 'https://cdn2.thecatapi.com/images/MTc4Mzc3MA.jpg', 'width': 500, 'height': 753}]
